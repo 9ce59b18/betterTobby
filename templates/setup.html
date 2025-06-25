@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Hobby-Vorlieben auswählen</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* Custom slider styles */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 50px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #be185d;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(190, 24, 93, 0.3);
+  transition: all 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(190, 24, 93, 0.4);
+}
+
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #be185d;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 12px rgba(190, 24, 93, 0.3);
+  transition: all 0.2s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(190, 24, 93, 0.4);
+}
+
+.slider-container {
+  position: relative;
+  padding: 12px 0;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.slider-labels > *:first-child {
+  width: 33%;
+}
+
+.slider-labels > *:last-child {
+  width: 33%;
+  text-align: end;
+}
+
+.slider-labels > *:nth-child(odd) {
+  width: 34%;
+}
+</style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 to-rose-100 flex items-center justify-center min-h-screen p-4">
+<div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-2xl">
+  <h1 class="text-3xl font-bold text-gray-800 text-center mb-8">Hobby-Vorlieben auswählen</h1>
+  
+  <form method="POST" action="/setup" class="space-y-3">
+    <!-- Schwierigkeit -->
+    <div class="slider-container">
+      <label for="schwierigkeit" class="block text-lg font-semibold text-gray-700 mb-3">Schwierigkeit</label>
+      <input type="range" 
+             name="schwierigkeit" 
+             id="schwierigkeit"
+             min="0" 
+             max="10" 
+             value="5" 
+             class="slider w-full bg-gradient-to-r from-fuchsia-600 to-rose-600 hover:from-fuchsia-700 hover:to-rose-700">
+      <div class="slider-labels">
+        <span>Einfach</span>
+        <span>Mittel</span>
+        <span>Schwer</span>
+      </div>
+    </div>
+
+    <!-- Aufwand -->
+    <div class="slider-container">
+      <label for="aufwand" class="block text-lg font-semibold text-gray-700 mb-3">Aufwand</label>
+      <input type="range" 
+             name="aufwand" 
+             id="aufwand"
+             min="0" 
+             max="10" 
+             value="5" 
+             class="slider w-full bg-gradient-to-r from-fuchsia-600 to-rose-600 hover:from-fuchsia-700 hover:to-rose-700">
+      <div class="slider-labels">
+        <span>Wenig</span>
+        <span>Mittel</span>
+        <span>Viel</span>
+      </div>
+    </div>
+
+    <!-- Kosten -->
+    <div class="slider-container">
+      <label for="kosten" class="block text-lg font-semibold text-gray-700 mb-3">Kosten</label>
+      <input type="range" 
+             name="kosten" 
+             id="kosten"
+             min="0" 
+             max="10" 
+             value="5" 
+             class="slider w-full bg-gradient-to-r from-fuchsia-600 to-rose-600 hover:from-fuchsia-700 hover:to-rose-700">
+      <div class="slider-labels">
+        <span>Günstig</span>
+        <span>Mittel</span>
+        <span>Teuer</span>
+      </div>
+    </div>
+
+    <!-- Indoor/Outdoor -->
+    <div class="slider-container">
+      <label for="indoor_outdoor" class="block text-lg font-semibold text-gray-700 mb-3">Indoor / Outdoor</label>
+      <input type="range" 
+             name="indoor_outdoor" 
+             id="indoor_outdoor"
+             min="0" 
+             max="10" 
+             value="5" 
+             class="slider w-full bg-gradient-to-r from-fuchsia-600 to-rose-600 hover:from-fuchsia-700 hover:to-rose-700">
+      <div class="slider-labels">
+        <span>Indoor</span>
+        <span>Beides</span>
+        <span>Outdoor</span>
+      </div>
+    </div>
+
+    <!-- Aktiv/Entspannt -->
+    <div class="slider-container">
+      <label for="aktiv_entspannt" class="block text-lg font-semibold text-gray-700 mb-3">Aktiv / Entspannt</label>
+      <input type="range" 
+             name="aktiv_entspannt" 
+             id="aktiv_entspannt"
+             min="0" 
+             max="10" 
+             value="5" 
+             class="slider w-full bg-gradient-to-r from-fuchsia-600 to-rose-600 hover:from-fuchsia-700 hover:to-rose-700">
+      <div class="slider-labels">
+        <span>Entspannt</span>
+        <span>Gemischt</span>
+        <span>Aktiv</span>
+      </div>
+    </div>
+
+    <button type="submit" class="mt-8 bg-gradient-to-r from-fuchsia-600 to-rose-600 hover:from-fuchsia-700 hover:to-rose-700 text-white font-semibold px-8 py-4 w-full rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl">
+      Start
+    </button>
+  </form>
+</div>
+</body>
+</html>
